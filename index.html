@@ -7,7 +7,7 @@
   <meta name="description" content="Shop shirts from SethIsLate supporting the Nashville Humane Association. After the cost of making each shirt is covered, every remaining dollar is donated directly to help animals in need." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #313F4E;
@@ -16,47 +16,49 @@
       --offwhite: #EDF0F1;
       --gray: #B5BEC3;
       --white: #ffffff;
-      --shadow: 0 20px 60px rgba(49, 63, 78, 0.18);
+      --ink: #263341;
+      --shadow: 0 24px 70px rgba(49, 63, 78, 0.20);
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--navy);
       background: var(--offwhite);
-      line-height: 1.6;
+      line-height: 1.55;
     }
-
     a { color: inherit; }
 
     .hero {
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
+      min-height: 94vh;
       position: relative;
+      display: flex;
+      align-items: stretch;
       overflow: hidden;
       color: var(--white);
+      background: var(--navy);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
-        linear-gradient(135deg, rgba(49, 63, 78, 0.97), rgba(56, 72, 91, 0.92)),
-        radial-gradient(circle at 20% 20%, rgba(215, 88, 70, 0.25), transparent 34%),
-        radial-gradient(circle at 85% 10%, rgba(237, 240, 241, 0.15), transparent 32%),
-        var(--navy);
-      padding: 28px;
+        linear-gradient(90deg, rgba(49,63,78,.98) 0%, rgba(49,63,78,.88) 42%, rgba(49,63,78,.42) 100%),
+        url('https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1800&q=80') center right/cover no-repeat;
+      transform: scale(1.02);
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      inset: auto -120px -160px auto;
-      width: 420px;
-      height: 420px;
-      background: rgba(215, 88, 70, 0.22);
-      border-radius: 50%;
-      filter: blur(3px);
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 22%, rgba(215,88,70,.28), transparent 30%),
+        linear-gradient(180deg, transparent 70%, rgba(49,63,78,.82));
+      pointer-events: none;
     }
 
     .topbar {
@@ -64,78 +66,86 @@
       top: 0;
       left: 0;
       right: 0;
-      padding: 26px clamp(22px, 5vw, 72px);
+      z-index: 4;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 2;
+      padding: 28px clamp(22px, 5vw, 76px);
     }
 
     .brand {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+      line-height: 1;
     }
 
-    .topbar a {
+    .topbar .brand { color: var(--white); font-size: 1.35rem; }
+
+    .navlinks {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-size: .9rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+
+    .navlinks a {
+      color: rgba(255,255,255,.88);
       text-decoration: none;
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.85);
       transition: color .2s ease;
     }
-
-    .topbar a:hover { color: var(--coral); }
+    .navlinks a:hover { color: var(--coral); }
 
     .hero-inner {
-      width: min(1120px, 100%);
+      width: min(1180px, 100%);
       margin: 0 auto;
       position: relative;
-      z-index: 1;
-      padding-top: 76px;
+      z-index: 2;
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: clamp(32px, 6vw, 74px);
+      grid-template-columns: minmax(0, 1fr) 430px;
+      gap: clamp(28px, 6vw, 70px);
       align-items: center;
-      animation: fadeUp .8s ease both;
+      padding: 128px clamp(22px, 5vw, 46px) 78px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
       border-radius: 999px;
-      padding: 9px 14px;
-      font-size: .9rem;
-      font-weight: 700;
+      color: rgba(255,255,255,.92);
+      padding: 9px 15px;
+      font-weight: 800;
+      font-size: .88rem;
       margin-bottom: 22px;
+      backdrop-filter: blur(8px);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(3.1rem, 7vw, 6.6rem);
-      line-height: .92;
-      letter-spacing: -0.08em;
-      max-width: 760px;
+      font-size: clamp(3.5rem, 8.2vw, 7.8rem);
+      line-height: .86;
+      letter-spacing: -0.09em;
+      color: var(--white);
     }
 
     .tagline {
       margin: 22px 0 0;
-      font-size: clamp(1.18rem, 2.3vw, 1.7rem);
-      line-height: 1.35;
-      color: rgba(255,255,255,0.88);
-      max-width: 650px;
-      font-weight: 600;
+      max-width: 660px;
+      font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+      line-height: 1.28;
+      color: rgba(255,255,255,.9);
+      font-weight: 700;
+      letter-spacing: -0.035em;
     }
 
     .mission {
-      margin: 28px 0 0;
-      max-width: 650px;
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.82);
+      margin: 26px 0 0;
+      max-width: 640px;
+      font-size: 1.06rem;
+      color: rgba(255,255,255,.83);
     }
 
     .cta-row {
@@ -150,216 +160,152 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       border: 0;
       border-radius: 999px;
-      padding: 16px 24px;
+      padding: 17px 25px;
       background: var(--coral);
       color: var(--white);
-      font-weight: 800;
+      font-weight: 900;
       text-decoration: none;
-      letter-spacing: .02em;
-      box-shadow: 0 14px 34px rgba(215, 88, 70, .34);
+      box-shadow: 0 16px 38px rgba(215, 88, 70, .38);
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 42px rgba(215, 88, 70, .43);
-      background: #e35f4d;
-    }
+    .button:hover { transform: translateY(-2px); background: #e35f4d; box-shadow: 0 22px 52px rgba(215,88,70,.46); }
 
     .secondary-link {
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,.86);
+      font-weight: 800;
       text-decoration: none;
-      font-weight: 700;
-      border-bottom: 1px solid rgba(255,255,255,0.35);
+      border-bottom: 1px solid rgba(255,255,255,.34);
       transition: color .2s ease, border-color .2s ease;
     }
+    .secondary-link:hover { color: var(--white); border-color: var(--coral); }
 
-    .secondary-link:hover {
-      color: var(--white);
-      border-color: var(--coral);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 34px;
-      padding: clamp(24px, 4vw, 40px);
-      box-shadow: 0 24px 80px rgba(0,0,0,.18);
-      backdrop-filter: blur(12px);
-    }
-
-    .photo-card {
-      min-height: 440px;
-      border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(49,63,78,.05), rgba(49,63,78,.45)),
-        url('https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=80') center/cover;
+    .hero-showcase {
+      align-self: stretch;
+      min-height: 520px;
       position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
     }
 
-    .photo-label {
+    .dog-card {
+      width: min(400px, 100%);
+      min-height: 520px;
+      border-radius: 36px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(49,63,78,.08), rgba(49,63,78,.55)),
+        url('https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+      box-shadow: 0 32px 90px rgba(0,0,0,.32);
+      border: 1px solid rgba(255,255,255,.22);
+      position: relative;
+    }
+
+    .dog-card::after {
+      content: "A simple shirt. A real way to help animals in need.";
       position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      background: rgba(237, 240, 241, 0.94);
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      color: var(--navy);
+      background: rgba(237,240,241,.95);
+      border-radius: 22px;
+      padding: 18px 19px;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+
+    .floating-note {
+      position: absolute;
+      top: 52px;
+      left: -34px;
+      background: var(--white);
       color: var(--navy);
       border-radius: 22px;
       padding: 18px 20px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+      box-shadow: var(--shadow);
+      width: 210px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
     }
+    .floating-note span { display: block; color: var(--coral); font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 5px; }
 
-    section {
-      padding: clamp(58px, 8vw, 98px) clamp(22px, 5vw, 72px);
-    }
+    section { padding: clamp(64px, 8vw, 106px) clamp(22px, 5vw, 76px); }
+    .container { width: min(1140px, 100%); margin: 0 auto; }
 
-    .container {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .section-header p {
-      max-width: 720px;
-      margin: 12px auto 0;
-      color: rgba(49,63,78,.78);
-      font-size: 1.05rem;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      line-height: 1.03;
-      letter-spacing: -0.065em;
-      margin: 0;
-    }
+    .section-header { text-align: center; margin-bottom: 38px; }
+    h2 { margin: 0; font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.02; letter-spacing: -0.075em; }
+    .section-header p { max-width: 730px; margin: 13px auto 0; color: rgba(49,63,78,.74); font-size: 1.06rem; }
 
     .shop-wrap {
       background: var(--white);
-      border-radius: 34px;
+      border-radius: 36px;
       box-shadow: var(--shadow);
       overflow: hidden;
       border: 1px solid rgba(49,63,78,.08);
-      padding: clamp(10px, 2vw, 20px);
+      padding: clamp(12px, 2vw, 22px);
     }
+    #myShop { min-height: 720px; border-radius: 28px; overflow: hidden; background: #fff; }
+    .loading-shop { display: grid; place-items: center; min-height: 420px; text-align: center; font-weight: 800; color: rgba(49,63,78,.70); padding: 30px; }
 
-    #myShop {
-      min-height: 680px;
-      border-radius: 26px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .loading-shop {
-      display: grid;
-      place-items: center;
-      min-height: 400px;
-      color: rgba(49,63,78,.7);
-      text-align: center;
-      padding: 40px 20px;
-      font-weight: 700;
-    }
-
-    .support {
-      background: var(--navy);
-      color: var(--white);
-    }
-
+    .support { background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+    .support::before { content:""; position:absolute; inset:-160px auto auto -160px; width:360px; height:360px; border-radius:50%; background:rgba(215,88,70,.20); }
+    .support .container { position: relative; z-index: 1; }
     .support .section-header p { color: rgba(255,255,255,.76); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 28px; padding: 30px; min-height: 220px; }
+    .card .label { display: inline-block; color: var(--coral); font-weight: 900; letter-spacing: .04em; text-transform: uppercase; font-size: .78rem; margin-bottom: 14px; }
+    .card h3 { margin: 0 0 10px; font-size: 1.38rem; letter-spacing: -0.045em; }
+    .card p { margin: 0; color: rgba(255,255,255,.76); }
 
-    .cards {
+    .artist { background: var(--offwhite); }
+    .artist-panel {
+      background: var(--white);
+      border: 1px solid rgba(49,63,78,.08);
+      box-shadow: var(--shadow);
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 52px);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
     }
+    .artist-panel h2 { font-size: clamp(1.8rem, 3.6vw, 3rem); }
+    .artist-panel p { margin: 12px 0 0; color: rgba(49,63,78,.76); font-size: 1.06rem; max-width: 720px; }
+    .artist-panel a { color: var(--coral); font-weight: 900; text-decoration: none; border-bottom: 2px solid rgba(215,88,70,.25); }
+    .artist-panel a:hover { border-color: var(--coral); }
 
-    .card {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 26px;
-      padding: 28px;
-      min-height: 205px;
-    }
+    .footer { padding: 48px clamp(22px, 5vw, 76px); background: #263341; color: rgba(255,255,255,.78); text-align: center; }
+    .footer .brand { color: var(--white); font-size: 1.35rem; margin-bottom: 12px; }
+    .socials { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 18px; font-weight: 900; }
+    .socials a { color: rgba(255,255,255,.88); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.25); transition: color .2s ease, border-color .2s ease; }
+    .socials a:hover { color: var(--coral); border-color: var(--coral); }
 
-    .card .label {
-      display: inline-block;
-      color: var(--coral);
-      font-weight: 900;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      font-size: .78rem;
-      margin-bottom: 14px;
-    }
+    .reveal { animation: fadeUp .8s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.35rem;
-      letter-spacing: -0.04em;
-    }
-
-    .card p {
-      margin: 0;
-      color: rgba(255,255,255,.75);
-    }
-
-    .footer {
-      padding: 50px clamp(22px, 5vw, 72px);
-      background: #263341;
-      color: rgba(255,255,255,.78);
-      text-align: center;
-    }
-
-    .footer .brand { color: var(--white); margin-bottom: 12px; }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 18px 0 24px;
-      font-weight: 800;
-    }
-
-    .socials a {
-      color: rgba(255,255,255,.88);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,.25);
-      transition: color .2s ease, border-color .2s ease;
-    }
-
-    .socials a:hover {
-      color: var(--coral);
-      border-color: var(--coral);
-    }
-
-    .made {
-      font-size: .95rem;
-      color: rgba(255,255,255,.62);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 860px) {
-      .hero { min-height: auto; padding: 24px; }
-      .hero-inner { grid-template-columns: 1fr; padding-top: 92px; }
-      .hero-card { padding: 0; border: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
-      .photo-card { min-height: 320px; }
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; padding-top: 118px; }
+      .hero-showcase { min-height: 380px; justify-content: flex-start; }
+      .dog-card { min-height: 380px; max-width: 420px; }
+      .floating-note { left: 20px; top: -24px; }
       .cards { grid-template-columns: 1fr; }
-      .topbar { padding: 22px 24px; }
-      .topbar a { display: none; }
-      #myShop { min-height: 740px; }
+      .artist-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .topbar { padding: 22px; }
+      .navlinks a:not(:last-child) { display: none; }
+      .hero-inner { padding-left: 22px; padding-right: 22px; padding-bottom: 48px; }
+      .hero { min-height: auto; }
+      .floating-note { display: none; }
+      .dog-card { width: 100%; }
+      #myShop { min-height: 780px; }
+      .button { width: 100%; }
+      .secondary-link { margin: 0 auto; }
     }
   </style>
 </head>
@@ -368,10 +314,13 @@
     <section class="hero" id="top">
       <div class="topbar">
         <div class="brand">SethIsLate</div>
-        <a href="#shop">Shop the Collection</a>
+        <nav class="navlinks" aria-label="Main navigation">
+          <a href="#shop">Shop</a>
+          <a href="#support">How It Helps</a>
+        </nav>
       </div>
 
-      <div class="hero-inner">
+      <div class="hero-inner reveal">
         <div>
           <div class="eyebrow">Supporting the Nashville Humane Association</div>
           <h1>SethIsLate</h1>
@@ -379,14 +328,13 @@
           <p class="mission">After the cost of making each shirt is covered, every remaining dollar is donated directly to the Nashville Humane Association to help care for animals in need.</p>
           <div class="cta-row">
             <a class="button" href="#shop">Shop Shirts &amp; Help Nashville's Animals</a>
-            <a class="secondary-link" href="#support">How it helps</a>
+            <a class="secondary-link" href="#support">See how it helps</a>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="photo-card" role="img" aria-label="Happy dog">
-            <div class="photo-label">A simple shirt. A real way to help animals in need.</div>
-          </div>
+        <div class="hero-showcase">
+          <div class="floating-note"><span>Fundraiser</span>Every shirt helps support Nashville's animals.</div>
+          <div class="dog-card" role="img" aria-label="Happy dog representing Nashville animals"></div>
         </div>
       </div>
     </section>
@@ -397,11 +345,8 @@
           <h2>Shop the Collection</h2>
           <p>Browse the shirts below. New designs will appear here as they are added to the shop.</p>
         </div>
-
         <div class="shop-wrap">
-          <div id="myShop">
-            <div class="loading-shop">Loading the shop...</div>
-          </div>
+          <div id="myShop"><div class="loading-shop">Loading the shop...</div></div>
         </div>
       </div>
     </section>
@@ -412,7 +357,6 @@
           <h2>Supporting Nashville's Animals</h2>
           <p>Every purchase helps turn a simple shirt into support for animals who need care, shelter, and a chance at a better life.</p>
         </div>
-
         <div class="cards">
           <div class="card">
             <span class="label">01</span>
@@ -432,6 +376,18 @@
         </div>
       </div>
     </section>
+
+    <section class="artist" id="artists">
+      <div class="container">
+        <div class="artist-panel">
+          <div>
+            <h2>Are you an artist and want to help design more shirts?</h2>
+            <p>Message me on <a href="https://www.instagram.com/sethislate" target="_blank" rel="noopener">Instagram</a>!</p>
+          </div>
+          <a class="button" href="https://www.instagram.com/sethislate" target="_blank" rel="noopener">Message on Instagram</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -442,7 +398,6 @@
       <span>•</span>
       <a href="https://www.tiktok.com/@sethislate" target="_blank" rel="noopener">TikTok</a>
     </div>
-    <div class="made">Are you an artist and want to help design more shirts? Message me on Instagram!</div>
   </footer>
 
   <script>
