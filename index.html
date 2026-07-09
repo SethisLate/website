@@ -3,152 +3,458 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nashville Humane Association Shirt Fundraiser</title>
+  <title>SethIsLate | Help Nashville's Animals</title>
+  <meta name="description" content="Shop shirts from SethIsLate supporting the Nashville Humane Association. After the cost of making each shirt is covered, every remaining dollar is donated directly to help animals in need." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --navy: #313F4E;
+      --slate: #38485B;
+      --coral: #D75846;
+      --offwhite: #EDF0F1;
+      --gray: #B5BEC3;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(49, 63, 78, 0.18);
+    }
+
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f7f4;
-      color: #1f1f1f;
-      line-height: 1.5;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--navy);
+      background: var(--offwhite);
+      line-height: 1.6;
     }
+
+    a { color: inherit; }
+
     .hero {
-      min-height: 78vh;
+      min-height: 92vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 48px 20px;
-      background: linear-gradient(135deg, #111 0%, #333 100%);
-      color: white;
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(49, 63, 78, 0.97), rgba(56, 72, 91, 0.92)),
+        radial-gradient(circle at 20% 20%, rgba(215, 88, 70, 0.25), transparent 34%),
+        radial-gradient(circle at 85% 10%, rgba(237, 240, 241, 0.15), transparent 32%),
+        var(--navy);
+      padding: 28px;
     }
-    .hero-inner { max-width: 900px; }
-    .logo-text {
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -120px -160px auto;
+      width: 420px;
+      height: 420px;
+      background: rgba(215, 88, 70, 0.22);
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+
+    .topbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 26px clamp(22px, 5vw, 72px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .brand {
+      font-size: 1.35rem;
       font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      color: rgba(255,255,255,.8);
-    }
-    .badge {
-      display: inline-block;
-      border: 1px solid rgba(255,255,255,.45);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      letter-spacing: .04em;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: clamp(42px, 8vw, 82px);
-      line-height: .95;
-      margin: 0 0 24px;
-      letter-spacing: -0.05em;
-    }
-    .hero p {
-      font-size: clamp(18px, 2.5vw, 24px);
-      max-width: 760px;
-      margin: 0 auto 32px;
-      color: rgba(255,255,255,.86);
-    }
-    .button {
-      display: inline-block;
-      background: white;
-      color: #111;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 16px 26px;
-      border-radius: 10px;
-      font-size: 18px;
-    }
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 20px;
-      text-align: center;
-    }
-    .section h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      margin: 0 0 12px;
       letter-spacing: -0.04em;
     }
-    .section p {
-      max-width: 780px;
-      margin: 0 auto 24px;
-      font-size: 18px;
-      color: #555;
+
+    .topbar a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.85);
+      transition: color .2s ease;
     }
-    .features {
+
+    .topbar a:hover { color: var(--coral); }
+
+    .hero-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      padding-top: 76px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(32px, 6vw, 74px);
+      align-items: center;
+      animation: fadeUp .8s ease both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.9);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.1rem, 7vw, 6.6rem);
+      line-height: .92;
+      letter-spacing: -0.08em;
+      max-width: 760px;
+    }
+
+    .tagline {
+      margin: 22px 0 0;
+      font-size: clamp(1.18rem, 2.3vw, 1.7rem);
+      line-height: 1.35;
+      color: rgba(255,255,255,0.88);
+      max-width: 650px;
+      font-weight: 600;
+    }
+
+    .mission {
+      margin: 28px 0 0;
+      max-width: 650px;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 16px;
-      margin-top: 28px;
+      margin-top: 34px;
     }
-    .feature {
-      background: white;
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 24px;
+      background: var(--coral);
+      color: var(--white);
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: .02em;
+      box-shadow: 0 14px 34px rgba(215, 88, 70, .34);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .shop-wrap {
-      background: white;
-      border-radius: 18px;
-      padding: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
-      margin-top: 24px;
-      min-height: 500px;
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(215, 88, 70, .43);
+      background: #e35f4d;
     }
-    footer {
+
+    .secondary-link {
+      color: rgba(255,255,255,0.84);
+      text-decoration: none;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .secondary-link:hover {
+      color: var(--white);
+      border-color: var(--coral);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 34px;
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .photo-card {
+      min-height: 440px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(49,63,78,.05), rgba(49,63,78,.45)),
+        url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80') center/cover;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-label {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      background: rgba(237, 240, 241, 0.94);
+      color: var(--navy);
+      border-radius: 22px;
+      padding: 18px 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    section {
+      padding: clamp(58px, 8vw, 98px) clamp(22px, 5vw, 72px);
+    }
+
+    .container {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-header {
       text-align: center;
-      padding: 32px 20px;
-      color: #666;
-      font-size: 14px;
+      margin-bottom: 36px;
+    }
+
+    .section-header p {
+      max-width: 720px;
+      margin: 12px auto 0;
+      color: rgba(49,63,78,.78);
+      font-size: 1.05rem;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.03;
+      letter-spacing: -0.065em;
+      margin: 0;
+    }
+
+    .shop-wrap {
+      background: var(--white);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(49,63,78,.08);
+      padding: clamp(10px, 2vw, 20px);
+    }
+
+    #myShop {
+      min-height: 680px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .loading-shop {
+      display: grid;
+      place-items: center;
+      min-height: 400px;
+      color: rgba(49,63,78,.7);
+      text-align: center;
+      padding: 40px 20px;
+      font-weight: 700;
+    }
+
+    .support {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .support .section-header p { color: rgba(255,255,255,.76); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 26px;
+      padding: 28px;
+      min-height: 205px;
+    }
+
+    .card .label {
+      display: inline-block;
+      color: var(--coral);
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .card p {
+      margin: 0;
+      color: rgba(255,255,255,.75);
+    }
+
+    .footer {
+      padding: 50px clamp(22px, 5vw, 72px);
+      background: #263341;
+      color: rgba(255,255,255,.78);
+      text-align: center;
+    }
+
+    .footer .brand { color: var(--white); margin-bottom: 12px; }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 18px 0 24px;
+      font-weight: 800;
+    }
+
+    .socials a {
+      color: rgba(255,255,255,.88);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .socials a:hover {
+      color: var(--coral);
+      border-color: var(--coral);
+    }
+
+    .made {
+      font-size: .95rem;
+      color: rgba(255,255,255,.62);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 860px) {
+      .hero { min-height: auto; padding: 24px; }
+      .hero-inner { grid-template-columns: 1fr; padding-top: 92px; }
+      .hero-card { padding: 0; border: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+      .photo-card { min-height: 320px; }
+      .cards { grid-template-columns: 1fr; }
+      .topbar { padding: 22px 24px; }
+      .topbar a { display: none; }
+      #myShop { min-height: 740px; }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="logo-text">SethisLate</div>
-      <div class="badge">Limited-Time Shirt Fundraiser</div>
-      <h1>Buy a Shirt. Help Nashville Animals.</h1>
-      <p>Every cent of profit after the shirt company takes out their costs goes directly to the Nashville Humane Association.</p>
-      <a class="button" href="#shop">Buy a Shirt</a>
+  <main>
+    <section class="hero" id="top">
+      <div class="topbar">
+        <div class="brand">SethIsLate</div>
+        <a href="#shop">Shop the Collection</a>
+      </div>
+
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Supporting the Nashville Humane Association</div>
+          <h1>SethIsLate</h1>
+          <p class="tagline">Just some random guy from the internet trying to make a positive impact.</p>
+          <p class="mission">After the cost of making each shirt is covered, every remaining dollar is donated directly to the Nashville Humane Association to help care for animals in need.</p>
+          <div class="cta-row">
+            <a class="button" href="#shop">Shop Shirts &amp; Help Nashville's Animals</a>
+            <a class="secondary-link" href="#support">How it helps</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="photo-card" role="img" aria-label="Happy dog and cat together">
+            <div class="photo-label">A simple shirt. A real way to help animals in need.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="container">
+        <div class="section-header">
+          <h2>Shop the Collection</h2>
+          <p>Browse the shirts below. New designs will appear here as they are added to the shop.</p>
+        </div>
+
+        <div class="shop-wrap">
+          <div id="myShop">
+            <div class="loading-shop">Loading the shop...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="support" id="support">
+      <div class="container">
+        <div class="section-header">
+          <h2>Supporting Nashville's Animals</h2>
+          <p>Every purchase helps turn a simple shirt into support for animals who need care, shelter, and a chance at a better life.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <span class="label">01</span>
+            <h3>Helping Animals</h3>
+            <p>Each purchase helps support the Nashville Humane Association and the animals in their care.</p>
+          </div>
+          <div class="card">
+            <span class="label">02</span>
+            <h3>Quality Apparel</h3>
+            <p>Shirts are printed on demand and fulfilled through Spreadshop so every order is handled professionally.</p>
+          </div>
+          <div class="card">
+            <span class="label">03</span>
+            <h3>Giving Back</h3>
+            <p>After the cost of making each shirt is covered, every remaining dollar is donated directly to the Nashville Humane Association.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand">SethIsLate</div>
+    <div>Follow SethIsLate</div>
+    <div class="socials">
+      <a href="https://www.instagram.com/sethislate" target="_blank" rel="noopener">Instagram</a>
+      <span>•</span>
+      <a href="https://www.tiktok.com/@sethislate" target="_blank" rel="noopener">TikTok</a>
+      <span>•</span>
+      <a href="https://www.facebook.com/sethislate" target="_blank" rel="noopener">Facebook</a>
     </div>
-  </header>
-
-  <section class="section">
-    <h2>Shirts That Give Back</h2>
-    <p>This fundraiser supports the Nashville Humane Association. Buy a shirt, share the link, and help raise money for animals in need.</p>
-    <div class="features">
-      <div class="feature"><strong>Supports Animals</strong><br />Profits benefit Nashville Humane Association.</div>
-      <div class="feature"><strong>Easy Ordering</strong><br />Printed and fulfilled by Spreadshop.</div>
-      <div class="feature"><strong>Shareable</strong><br />Send this page to friends, family, and followers.</div>
-    </div>
-  </section>
-
-  <section class="section" id="shop">
-    <h2>Order Your Shirt</h2>
-    <p>Choose your size and style below.</p>
-
-    <div class="shop-wrap">
-      <div id="myShop">Loading shop...</div>
-    </div>
-  </section>
-
-  <footer>
-    Fundraiser for Nashville Humane Association<br />
-    © 2026 SethisLate Shirt Fundraiser
+    <div class="made">Made with love in Nashville, Tennessee.</div>
   </footer>
 
   <script>
     var spread_shop_config = {
       shopName: 'SethisLate',
+      locale: 'us_US',
       prefix: 'https://SethisLate.myspreadshop.com',
       baseId: 'myShop'
     };
   </script>
-  <script type="text/javascript" src="https://SethisLate.myspreadshop.com/js/shopclient.nocache.js"></script>
+  <script type="text/javascript" src="https://SethisLate.myspreadshop.com/shopfiles/shopclient/shopclient.nocache.js"></script>
 </body>
 </html>
