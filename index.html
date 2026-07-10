@@ -289,6 +289,9 @@
       .socials { gap: 14px; margin-bottom: 14px; }
       .artist-note { font-size: .98rem; max-width: 330px; }
     }
+    .spreadshop-fallback { width: 100%; min-height: 720px; border: 0; background: #fff; border-radius: 18px; }
+    .shop-error-note { margin-top: 14px; font-size: 14px; line-height: 1.45; color: rgba(16,32,51,.72); text-align: center; }
+
   </style>
 </head>
 <body>
@@ -314,7 +317,7 @@
         <h2 class="section-title">Shop the Collection</h2>
         <div class="title-line"></div>
         <div class="shop-frame">
-          <div id="myShop"><div class="loading-shop">Loading the shop...</div></div>
+          <div id="myShop"><a class="loading-shop" href="https://sethislate.myspreadshop.com" target="_blank" rel="noopener">Loading the shop preview...</a></div>
         </div>
         <div class="more-wrap">
           <a class="mock-button" href="https://SethisLate.myspreadshop.com" target="_blank" rel="noopener">VIEW MORE PRODUCTS</a>
@@ -358,13 +361,27 @@
   </footer>
 
   <script>
-    var spread_shop_config = {
+    window.spread_shop_config = {
       shopName: 'sethislate',
       locale: 'us_US',
       prefix: 'https://sethislate.myspreadshop.com',
-      baseId: 'myShop'
+      baseId: 'myShop',
+      updateMetadata: false
     };
   </script>
   <script type="text/javascript" src="https://sethislate.myspreadshop.com/js/shopclient.nocache.js"></script>
+  <script>
+    // Fallback: if Spreadshop's JavaScript does not replace the loading message,
+    // show the live shop inside the page so visitors can still preview products.
+    window.setTimeout(function () {
+      var shop = document.getElementById('myShop');
+      if (!shop) return;
+      var stillLoading = shop.textContent && shop.textContent.toLowerCase().indexOf('loading') !== -1;
+      var spreadshopLoaded = shop.querySelector('[class*="sprd"], iframe');
+      if (stillLoading && !spreadshopLoaded) {
+        shop.innerHTML = '<iframe class="spreadshop-fallback" src="https://sethislate.myspreadshop.com" title="SethIsLate Spreadshop preview"></iframe><p class="shop-error-note">If the preview does not load, <a href="https://sethislate.myspreadshop.com" target="_blank" rel="noopener">open the shop here</a>.</p>';
+      }
+    }, 7000);
+  </script>
 </body>
 </html>
